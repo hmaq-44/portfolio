@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassan Al-Qurashi | Portfolio</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Base Colors & Theme */
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151b2c;
+            --accent-blue: #00d2ff;
+            --accent-green: #00f5d4;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-green));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-green));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .hero-image {
+            flex: 0 0 350px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-blue);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.3);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-green));
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 245, 212, 0.4);
+        }
+
+        /* Global Sections Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-green));
+            border-radius: 2px;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-blue);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.4rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .company {
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Projects Section Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 210, 255, 0.15);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tags span {
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .project-links a:hover {
+            color: var(--accent-green);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skills-category {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .skills-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-green);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .skills-list li i {
+            color: var(--accent-blue);
+        }
+
+        /* Certifications Section */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cert-card h3 {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card .issuer {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .cert-card .verification {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+
+        /* Contact & Footer Section */
+        footer {
+            background-color: #060911;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-main);
+            font-size: 1.8rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-green);
+            transform: translateY(-3px);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-image {
+                flex: 0 0 auto;
+            }
+            nav ul {
+                display: none; /* simple hidden for mobile, can be expanded as burger menu */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">HA</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm <span>Hassan Al-Qurashi</span></h1>
+                <h2>Computer Engineer | AI, Robotics & Drones</h2>
+                <p>I am a passionate Computer Engineer specializing in Artificial Intelligence and Data Science. My core interest lies at the intersection of hardware and software, where I focus on developing intelligent systems, robotics, and autonomous drone applications. I am driven by bridging physical computing with advanced AI models to build smart, real-world solutions.</p>
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fa-solid fa-folder-open"></i> View My Work
+                </a>
+            </div>
+            <div class="hero-image">
+                <!-- Displays the profile picture from your directory -->
+                <img src="profile.jpeg" alt="Hassan Al-Qurashi">
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="container" id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline">
+            <!-- SmartMethods Experience -->
+            <div class="timeline-item">
+                <h3>Engineering Intern</h3>
+                <span class="company"><i class="fa-solid fa-briefcase"></i> SmartMethods (الأساليب الذكية)</span>
+                <p>Completed intensive multi-disciplinary engineering training focusing on robotics and AI across four specialized tracks:</p>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: var(--text-muted); font-size: 0.95rem;">
+                    <li>Artificial Intelligence & Robot Operating System (ROS)</li>
+                    <li>Mechanical Engineering fundamentals for robotics</li>
+                    <li>Electrical & Electronics Engineering & Internet of Things (IoT)</li>
+                    <li>Web & Application Development</li>
+                </ul>
+            </div>
+            <!-- TechUp Experience -->
+            <div class="timeline-item">
+                <h3>Public Relations Specialist</h3>
+                <span class="company"><i class="fa-solid fa-briefcase"></i> TechUp</span>
+                <p>Managed public relations and community outreach, coordinating and organizing educational events, bootcamps, and training programs designed to empower and develop student skills in technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="container" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div>
+                    <h3>IoT-Powered Smart Fire Safety System</h3>
+                    <p>An autonomous, IoT-based hazard prevention system developed using an ESP32 microcontroller, flame sensors, and electronic lock integration to ensure immediate fire localization and automated exit safety.</p>
+                </div>
+                <div>
+                    <div class="tech-tags">
+                        <span>ESP32</span>
+                        <span>IoT</span>
+                        <span>Microcontrollers</span>
+                        <span>Smart Systems</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div>
+                    <h3>AI Model Development</h3>
+                    <p>Constructed and optimized customized deep learning neural network structures using TensorFlow and Keras framework environments, focusing on processing speed, model efficiency, and prediction reliability.</p>
+                </div>
+                <div>
+                    <div class="tech-tags">
+                        <span>TensorFlow</span>
+                        <span>Keras</span>
+                        <span>Python</span>
+                        <span>AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div>
+                    <h3>BlueVision Object Detection</h3>
+                    <p>Designed a real-time computer vision tracker using OpenCV library mechanisms. Activates camera feeds to accurately identify, track, and process dynamic blue color spectrum objects on screen.</p>
+                </div>
+                <div>
+                    <div class="tech-tags">
+                        <span>OpenCV</span>
+                        <span>Computer Vision</span>
+                        <span>Python</span>
+                        <span>Real-Time Processing</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="container" id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-container">
+            
+            <!-- Category 1: Embedded Systems -->
+            <div class="skills-category">
+                <h3><i class="fa-solid fa-microchip"></i> Embedded Systems</h3>
+                <ul class="skills-list">
+                    <li><i class="fa-solid fa-circle-check"></i> Microcontrollers</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Sensor Integration</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Smart Systems</li>
+                </ul>
+            </div>
+
+            <!-- Category 2: Programming & AI -->
+            <div class="skills-category">
+                <h3><i class="fa-solid fa-code"></i> Programming & AI</h3>
+                <ul class="skills-list">
+                    <li><i class="fa-solid fa-circle-check"></i> Python</li>
+                    <li><i class="fa-solid fa-circle-check"></i> OpenCV (Computer Vision)</li>
+                    <li><i class="fa-solid fa-circle-check"></i> TensorFlow & Keras</li>
+                    <li><i class="fa-solid fa-circle-check"></i> NumPy & Pandas</li>
+                </ul>
+            </div>
+
+            <!-- Category 3: Databases & Tools -->
+            <div class="skills-category">
+                <h3><i class="fa-solid fa-database"></i> Databases & Tools</h3>
+                <ul class="skills-list">
+                    <li><i class="fa-solid fa-circle-check"></i> SQL Databases</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Git & GitHub</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="container" id="certifications">
+        <h2 class="section-title">Professional Certifications</h2>
+        <div class="certifications-grid">
+            
+            <!-- Cert 1 -->
+            <div class="cert-card">
+                <div>
+                    <h3>Unleashing the Power of AI Agents</h3>
+                    <p class="issuer">IBM SkillsBuild</p>
+                </div>
+                <span class="verification">ID: ALM-COURSE_3825456</span>
+            </div>
+
+            <!-- Cert 2 -->
+            <div class="cert-card">
+                <div>
+                    <h3>Fundamentals of Electric Circuits</h3>
+                    <p class="issuer">SmartMethods (الأساليب الذكية)</p>
+                </div>
+                <span class="verification">Focus: Robotics engineering, sensors & DC/AC circuit analysis</span>
+            </div>
+
+            <!-- Cert 3 -->
+            <div class="cert-card">
+                <div>
+                    <h3>Python 101</h3>
+                    <p class="issuer">Satr - Tuwaiq Academy</p>
+                </div>
+                <span class="verification">Level: Beginner (4 Hours)</span>
+            </div>
+
+            <!-- Cert 4 -->
+            <div class="cert-card">
+                <div>
+                    <h3>SQL 101</h3>
+                    <p class="issuer">Satr - Tuwaiq Academy</p>
+                </div>
+                <span class="verification">Level: Beginner (2 Hours)</span>
+            </div>
+
+            <!-- Cert 5 -->
+            <div class="cert-card">
+                <div>
+                    <h3>SQL 102</h3>
+                    <p class="issuer">Satr - Tuwaiq Academy</p>
+                </div>
+                <span class="verification">Level: Intermediate (1 Hour)</span>
+            </div>
+
+        </div>
+    </section>
+
+   <!-- FontAwesome Library Update (Just in case to support X icon) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- Footer & Contact -->
+    <footer>
+        <div class="social-links">
+            <!-- GitHub Link -->
+            <a href="https://github.com/hmaq-44" target="_blank" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <!-- X (Twitter) Link - Handled with custom SVG if fontawesome icon fails to load -->
+            <a href="https://x.com/hmaq_2003" target="_blank" title="X (Twitter)" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1.4em" viewBox="0 0 512 512" fill="currentColor">
+                    <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
+                </svg>
+            </a>
+            <!-- Phone Link -->
+            <a href="tel:+966550786259" title="Phone">
+                <i class="fa-solid fa-phone"></i>
+            </a>
+            <!-- Email Link -->
+            <a href="mailto:hmaq897@gmail.com" title="Email">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 0.5rem; font-size: 0.95rem;">
+            📍 Taif, Saudi Arabia
+        </p>
+        <p>&copy; 2026 Hassan Al-Qurashi. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
